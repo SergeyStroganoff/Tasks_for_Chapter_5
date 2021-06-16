@@ -24,14 +24,20 @@ public class Main {
     public static void main(String[] args) {
 
         ArrayList<Integer> integerArrayList = Main.getUserNumbers();
-        if (integerArrayList.isEmpty()){
+        if (integerArrayList.isEmpty()) {
             System.out.println("Нет данных для обработки, программа будет завершена");
             System.exit(0);
         }
 
-        
+        // 1
+        System.out.println("Найти самое короткое и самое длинное число. Вывести найденные числа и их длину.");
+        Integer[] arrayMinMax = NumberUtils.getMinMaxNumberLengths(integerArrayList);
+        System.out.println("Минимальное число: " + arrayMinMax[0] + " его длинна: " + arrayMinMax[0].toString().length());
+        System.out.println("Максимальное число: " + arrayMinMax[1] + " его длинна: " + arrayMinMax[1].toString().length());
+
 
     }
+
     public static ArrayList<Integer> getUserNumbers() {
         ArrayList<Integer> arrayInteger = new ArrayList<>();
         System.out.println("Введите числа. Для завершения введите 'q'");
