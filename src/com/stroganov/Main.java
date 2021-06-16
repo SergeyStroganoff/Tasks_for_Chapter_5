@@ -23,8 +23,17 @@ public class Main {
 
     public static void main(String[] args) {
 
+        ArrayList<Integer> integerArrayList = Main.getUserNumbers();
+        if (integerArrayList.isEmpty()){
+            System.out.println("Нет данных для обработки, программа будет завершена");
+            System.exit(0);
+        }
 
-        ArrayList<Integer> array = new ArrayList<>();
+        
+
+    }
+    public static ArrayList<Integer> getUserNumbers() {
+        ArrayList<Integer> arrayInteger = new ArrayList<>();
         System.out.println("Введите числа. Для завершения введите 'q'");
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -36,15 +45,13 @@ public class Main {
                 if (tempString.equals("q")) {
                     break;
                 }
-                array.add(Integer.parseInt(tempString));
+                arrayInteger.add(Integer.parseInt(tempString));
             }
         } catch (NumberFormatException f) {
             System.err.println("Неправильный формат введенного последнего числа: " + f + "\n");
         } catch (IOException e) {
             System.out.println("Ошибка чтения с консоли: " + e + "\n");
         }
-
-
-
+        return arrayInteger;
     }
 }
