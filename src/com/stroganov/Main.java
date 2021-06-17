@@ -56,14 +56,17 @@ public class Main {
         // 5
 
         System.out.println("Найти количество чисел, содержащих только четные цифры, а среди них — количество чисел с равным числом четных и нечетных цифр.");
-        int [] buffer = NumberUtils.getCountEvenNumbers(integerArrayList);
+        int[] buffer = NumberUtils.getCountEvenNumbers(integerArrayList);
         System.out.println("Количество чисел только с четными цифрами: " + buffer[0]);
         System.out.println("Количество чисел  с четными и нечетными с равным числом: " + buffer[1]);
 
         // 6
 
         System.out.println("Найти число, цифры в котором идут в строгом порядке возрастания. Если таких чисел несколько, найти первое из них.");
-
+        int increaseDigitNumber = NumberUtils.getNumberIncreaseDigit(integerArrayList);
+        if (increaseDigitNumber != 0) {
+            System.out.println(increaseDigitNumber);
+        } else System.out.println("Число по заданному условию не найдено");
     }
 
 

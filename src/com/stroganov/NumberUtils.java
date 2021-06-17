@@ -108,6 +108,7 @@ public class NumberUtils {
             arrayListDigit.add(number % 10);
             number /= 10;
         }
+        Collections.reverse(arrayListDigit);
         return arrayListDigit;
 
     }
@@ -144,7 +145,18 @@ public class NumberUtils {
 
     public static int getNumberIncreaseDigit(ArrayList<Integer> integerArrayList) {
 
-
+        for (Integer number : integerArrayList) {
+            ArrayList<Integer> arrayListDigit = getDigitsNumber(number);
+            if (arrayListDigit.size() >= 2 && arrayListDigit.size() <= 10) {
+                int count = 0;
+                for (int n = 1; n < arrayListDigit.size(); n++) {
+                    if (arrayListDigit.get(n - 1) < arrayListDigit.get(n)) {
+                        count++;
+                    }// ВОПРОС!?
+                }
+                if (count == arrayListDigit.size() - 1) return number;
+            }
+        }
         return 0;
     }
 }
