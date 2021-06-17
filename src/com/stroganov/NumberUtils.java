@@ -1,6 +1,8 @@
 package com.stroganov;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class NumberUtils {
 
@@ -31,4 +33,31 @@ public class NumberUtils {
     }
 
 
+    public static int numberLength(int anyNumber) { // метод определения длинны числа в символах без учета знака отрицания
+        int result = 0;
+
+        if (anyNumber < 0) {
+            anyNumber = -anyNumber;
+        }
+
+        if (anyNumber == 0) {
+            return result + 1;
+        }
+
+        while (anyNumber > 0) {
+            anyNumber /= 10;
+            result++;
+        }
+
+        return result;
+    }
+
+    private static Comparator<Integer> compareNumberLengths() {
+        return (o1, o2) -> o1.toString().length() - o2.toString().length();
+    }
+
+
+    public static void sortByNumberLengths(ArrayList<Integer> integerArrayList) {
+        Collections.sort(integerArrayList, compareNumberLengths());
+    }
 }

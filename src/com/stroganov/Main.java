@@ -35,6 +35,10 @@ public class Main {
         System.out.println("Минимальное число: " + arrayMinMax[0] + " его длинна: " + arrayMinMax[0].toString().length());
         System.out.println("Максимальное число: " + arrayMinMax[1] + " его длинна: " + arrayMinMax[1].toString().length());
 
+        //2
+        System.out.println("Вывести числа в порядке возрастания (убывания) значений их длины.");
+        NumberUtils.sortByNumberLengths(integerArrayList);
+        integerArrayList.forEach(System.out::println);
 
     }
 
