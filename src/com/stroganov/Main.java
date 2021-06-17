@@ -50,7 +50,7 @@ public class Main {
         // 4
 
         System.out.println("Найти число, в котором количество различных цифр минимально. Если таких чисел несколько, найти первое из них.");
-        int s = NumberUtils.findMinDifferentNumbers(integerArrayList);
+        int s = NumberUtils.getMinDifferentNumbers(integerArrayList);
         System.out.println("Первое число, в котором количество различных цифр минимально: " + s);
 
         // 5
@@ -67,6 +67,11 @@ public class Main {
         if (increaseDigitNumber != 0) {
             System.out.println(increaseDigitNumber);
         } else System.out.println("Число по заданному условию не найдено");
+
+        // 7
+        System.out.println("Найти число, состоящее только из различных цифр. Если таких чисел несколько, найти первое из них.");
+        int numberMaxDifferentDigit = NumberUtils.getNumberMaxDifferentDigit(integerArrayList);
+        System.out.println("Число с максимальным количеством разных знаков " + numberMaxDifferentDigit);
     }
 
 

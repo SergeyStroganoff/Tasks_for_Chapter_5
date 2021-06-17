@@ -68,11 +68,10 @@ public class NumberUtils {
         return resultArrayList;
     }
 
-    public static int findMinDifferentNumbers(ArrayList<Integer> integerArrayList) {
+    public static int getMinDifferentNumbers(ArrayList<Integer> integerArrayList) {
         int result = 0;
 
         ArrayList<Integer> arrayUniqueSymbols = new ArrayList<>(); // временный список
-
         Set<String> set = new HashSet<>();
 
         for (int index : integerArrayList) {
@@ -84,15 +83,14 @@ public class NumberUtils {
             String s = String.valueOf(index);
             String[] arr = s.split("");
 
-            int count;
+
             for (int i = 0; i < s.length(); i++) { // ищем количество уникальных символов
                 if (!arr[i].equals("-")) {
                     set.add(arr[i]);
                 }
             }
-            count = set.size();
+            arrayUniqueSymbols.add(set.size());
             set.clear();
-            arrayUniqueSymbols.add(count);
         }
         ArrayList<Integer> tempArray = (ArrayList<Integer>) arrayUniqueSymbols.clone();
         Collections.sort(tempArray);
@@ -158,5 +156,24 @@ public class NumberUtils {
             }
         }
         return 0;
+    }
+
+    public static Integer getNumberMaxDifferentDigit(ArrayList<Integer> integerArrayList) { // можно модернизировать 4-й метод на 2 значения сразу
+        HashSet<Integer> integerHashSet = new HashSet<>();
+        ArrayList<Integer> arrayUniqueSymbols = new ArrayList<>(); // временный список
+        for (Integer number : integerArrayList) {
+            ArrayList<Integer> arrayListDigit = getDigitsNumber(number);
+            if (arrayListDigit.size() == 1) return number;
+            for (Integer digit : arrayListDigit) {
+                integerHashSet.add(digit);
+            }
+            if (integerHashSet.size() == arrayListDigit.size()) return number;
+            arrayUniqueSymbols.add(integerHashSet.size());
+            integerHashSet.clear();
+        }
+        ArrayList<Integer> tempArray = (ArrayList<Integer>) arrayUniqueSymbols.clone();
+        Collections.sort(tempArray);
+        int index = arrayUniqueSymbols.indexOf(tempArray.get(tempArray.size()-1));
+        return integerArrayList.get(index);
     }
 }
