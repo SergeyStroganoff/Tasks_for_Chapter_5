@@ -22,7 +22,8 @@ public class NumberUtils {
             if (numberLengths > maxLengths) {
                 maxLengths = numberLengths;
                 numberMaxLengths = number;
-            } else if (numberLengths < minLengths) {
+            }
+            if (numberLengths <= minLengths) {
                 minLengths = numberLengths;
                 numberMinLengths = number;
             }
@@ -59,5 +60,24 @@ public class NumberUtils {
 
     public static void sortByNumberLengths(ArrayList<Integer> integerArrayList) {
         Collections.sort(integerArrayList, compareNumberLengths());
+    }
+
+
+    public static ArrayList<Integer> getNumbersLengthsLessMedium(ArrayList<Integer> integerArrayList) {
+
+        ArrayList<Integer> resultArrayList = new ArrayList<>();
+
+        int allLength = 0;
+        for (int number : integerArrayList) {
+            allLength += numberLength(number);
+        }
+        int mediumLength = allLength / integerArrayList.size();
+        System.out.println("Medium "+mediumLength);
+        for (int arrayNumber : integerArrayList) {
+            if (numberLength(arrayNumber) < mediumLength) {
+                resultArrayList.add(arrayNumber);
+            }
+        }
+        return resultArrayList;
     }
 }

@@ -32,13 +32,20 @@ public class Main {
         // 1
         System.out.println("Найти самое короткое и самое длинное число. Вывести найденные числа и их длину.");
         Integer[] arrayMinMax = NumberUtils.getMinMaxNumberLengths(integerArrayList);
-        System.out.println("Минимальное число: " + arrayMinMax[0] + " его длинна: " + arrayMinMax[0].toString().length());
-        System.out.println("Максимальное число: " + arrayMinMax[1] + " его длинна: " + arrayMinMax[1].toString().length());
+        System.out.println("Число с минимальным количеством символов: " + arrayMinMax[0] + " его длинна: " + arrayMinMax[0].toString().length());
+        System.out.println("Число с максимальным количеством символов: " + arrayMinMax[1] + " его длинна: " + arrayMinMax[1].toString().length());
 
         //2
         System.out.println("Вывести числа в порядке возрастания (убывания) значений их длины.");
         NumberUtils.sortByNumberLengths(integerArrayList);
         integerArrayList.forEach(System.out::println);
+
+        // 3
+        System.out.println("Вывести на консоль те числа, длина которых меньше (больше) средней длины по всем числам, а также длину.");
+        ArrayList<Integer> arraySpecialLengths = NumberUtils.getNumbersLengthsLessMedium(integerArrayList);
+        if (!arraySpecialLengths.isEmpty()) {
+            arraySpecialLengths.forEach(x -> System.out.println("Число: " + x + " длинна символов: " + x.toString().length()));
+        } else System.out.println("Нет чисел подходящих под условие");
 
     }
 
