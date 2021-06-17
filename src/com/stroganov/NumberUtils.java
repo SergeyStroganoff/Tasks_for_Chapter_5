@@ -1,8 +1,6 @@
 package com.stroganov;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.*;
 
 public class NumberUtils {
 
@@ -72,12 +70,44 @@ public class NumberUtils {
             allLength += numberLength(number);
         }
         int mediumLength = allLength / integerArrayList.size();
-        System.out.println("Medium "+mediumLength);
         for (int arrayNumber : integerArrayList) {
             if (numberLength(arrayNumber) < mediumLength) {
                 resultArrayList.add(arrayNumber);
             }
         }
         return resultArrayList;
+    }
+
+    public static int findMinDifferentNumbers(ArrayList<Integer> integerArrayList) {
+        int result = 0;
+
+        ArrayList<Integer> arrayUniqueSymbols = new ArrayList<>(); // временный список
+
+        Set<String> set = new HashSet<>();
+
+        for (int index : integerArrayList) {
+
+            if (index < 10 && index > -10) {
+                return index;
+            } // если нашли однозначное число, возвращаем именно его
+
+            String s = String.valueOf(index);
+            String[] arr = s.split("");
+
+            int count;
+            for (int i = 0; i < s.length(); i++) { // ищем количество уникальных символов
+                if (!arr[i].equals("-")) {
+                    set.add(arr[i]);
+                }
+            }
+            count = set.size();
+            set.clear();
+            arrayUniqueSymbols.add(count);
+        }
+        ArrayList<Integer> tempArray = (ArrayList<Integer>) arrayUniqueSymbols.clone();
+        Collections.sort(tempArray);
+        int index = arrayUniqueSymbols.indexOf(tempArray.get(0));
+        return integerArrayList.get(index);
+
     }
 }

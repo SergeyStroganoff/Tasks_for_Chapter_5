@@ -41,13 +41,20 @@ public class Main {
         integerArrayList.forEach(System.out::println);
 
         // 3
-        System.out.println("Вывести на консоль те числа, длина которых меньше (больше) средней длины по всем числам, а также длину.");
+        System.out.println("Вывести на консоль те числа, длина которых меньше средней длины по всем числам, а также длину.");
         ArrayList<Integer> arraySpecialLengths = NumberUtils.getNumbersLengthsLessMedium(integerArrayList);
         if (!arraySpecialLengths.isEmpty()) {
             arraySpecialLengths.forEach(x -> System.out.println("Число: " + x + " длинна символов: " + x.toString().length()));
         } else System.out.println("Нет чисел подходящих под условие");
 
+        // 4
+
+        System.out.println("Найти число, в котором количество различных цифр минимально. Если таких чисел несколько, найти первое из них.");
+        int s = NumberUtils.findMinDifferentNumbers(integerArrayList);
+        System.out.println("Первое число, в котором количество различных цифр минимально: " + s);
+
     }
+
 
     public static ArrayList<Integer> getUserNumbers() {
         ArrayList<Integer> arrayInteger = new ArrayList<>();
