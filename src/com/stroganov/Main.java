@@ -53,6 +53,13 @@ public class Main {
         int s = NumberUtils.findMinDifferentNumbers(integerArrayList);
         System.out.println("Первое число, в котором количество различных цифр минимально: " + s);
 
+        // 5
+
+        System.out.println("Найти количество чисел, содержащих только четные цифры, а среди них — количество чисел с равным числом четных и нечетных цифр.");
+        int [] buffer = NumberUtils.getCountEvenNumbers(integerArrayList);
+        System.out.println("Количество чисел только с четными цифрами: " + buffer[0]);
+        System.out.println("Количество чисел  с четными и нечетными с равным числом: " + buffer[1]);
+
     }
 
 

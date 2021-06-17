@@ -33,22 +33,12 @@ public class NumberUtils {
 
 
     public static int numberLength(int anyNumber) { // метод определения длинны числа в символах без учета знака отрицания
-        int result = 0;
-
         if (anyNumber < 0) {
             anyNumber = -anyNumber;
         }
+        Integer tempInteger = anyNumber;
+        return tempInteger.toString().length();
 
-        if (anyNumber == 0) {
-            return result + 1;
-        }
-
-        while (anyNumber > 0) {
-            anyNumber /= 10;
-            result++;
-        }
-
-        return result;
     }
 
     private static Comparator<Integer> compareNumberLengths() {
@@ -109,5 +99,41 @@ public class NumberUtils {
         int index = arrayUniqueSymbols.indexOf(tempArray.get(0));
         return integerArrayList.get(index);
 
+    }
+
+
+    public static int[] getCountEvenNumbers(ArrayList<Integer> integerArrayList) {
+
+        int[] result = new int[2];
+        int countNumbersOnlyEven = 0;
+        int countNumbersFiftyFifty = 0;
+
+        for (Integer number : integerArrayList) {
+
+            int tempNumber = number;
+            ArrayList<Integer> arrayListDigit = new ArrayList<>();
+            while (tempNumber != 0) {
+                arrayListDigit.add(tempNumber % 10);
+                tempNumber /= 10;
+            }
+           long evenDigitCount = arrayListDigit.stream()
+                    .filter(x -> x % 2 == 0)
+                    .count();
+
+            int numberDigits = numberLength(number);
+            int oddDigitCount = numberDigits - (int) evenDigitCount;
+            System.out.println(oddDigitCount + "нечетных тут");
+
+            if (numberDigits == (int) evenDigitCount) {
+                countNumbersOnlyEven++;
+            }
+
+            if (evenDigitCount == oddDigitCount) {
+                countNumbersFiftyFifty++;
+            }
+        }
+        result[0] = countNumbersOnlyEven;
+        result[1] = countNumbersFiftyFifty;
+        return result;
     }
 }
