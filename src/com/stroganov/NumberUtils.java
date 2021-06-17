@@ -102,6 +102,17 @@ public class NumberUtils {
     }
 
 
+    public static ArrayList<Integer> getDigitsNumber(int number) {
+        ArrayList<Integer> arrayListDigit = new ArrayList<>();
+        while (number != 0) {
+            arrayListDigit.add(number % 10);
+            number /= 10;
+        }
+        return arrayListDigit;
+
+    }
+
+
     public static int[] getCountEvenNumbers(ArrayList<Integer> integerArrayList) {
 
         int[] result = new int[2];
@@ -109,20 +120,13 @@ public class NumberUtils {
         int countNumbersFiftyFifty = 0;
 
         for (Integer number : integerArrayList) {
-
-            int tempNumber = number;
-            ArrayList<Integer> arrayListDigit = new ArrayList<>();
-            while (tempNumber != 0) {
-                arrayListDigit.add(tempNumber % 10);
-                tempNumber /= 10;
-            }
-           long evenDigitCount = arrayListDigit.stream()
+            ArrayList<Integer> arrayListDigit = getDigitsNumber(number);
+            long evenDigitCount = arrayListDigit.stream()
                     .filter(x -> x % 2 == 0)
                     .count();
 
             int numberDigits = numberLength(number);
             int oddDigitCount = numberDigits - (int) evenDigitCount;
-            System.out.println(oddDigitCount + "нечетных тут");
 
             if (numberDigits == (int) evenDigitCount) {
                 countNumbersOnlyEven++;
@@ -135,5 +139,12 @@ public class NumberUtils {
         result[0] = countNumbersOnlyEven;
         result[1] = countNumbersFiftyFifty;
         return result;
+    }
+
+
+    public static int getNumberIncreaseDigit(ArrayList<Integer> integerArrayList) {
+
+
+        return 0;
     }
 }
