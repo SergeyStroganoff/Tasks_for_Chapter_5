@@ -23,10 +23,16 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 /**
- * Main method.
+ * Main class contains main method
+ * and example of using methods of the NumberUnits class.
+ * The data set is requested from the user using the keyboard.
  */
 public class Main {
-
+    /**
+     * Main method.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         ArrayList<Integer> integerArrayList = Main.getUserNumbers();
@@ -95,6 +101,7 @@ public class Main {
     /**
      * The method returns a list of numbers entered by the user from the keyboard.
      * The input stops when you enter the "y" character or the "q" character.
+     *
      * @return array of Integer
      */
 
