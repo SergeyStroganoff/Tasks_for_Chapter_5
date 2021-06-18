@@ -2,10 +2,23 @@ package com.stroganov;
 
 import java.util.*;
 
+/**
+ * A class for processing a list of numbers using different methods.
+ * * @since   1.0
+ * * @author Sergey Stroganov
+ */
+
 public class NumberUtils {
+    /**
+     * The method returns a number with the minimum and a number with the maximum number of digits.
+     *
+     * @param integerArrayList array of Integer
+     * @return An array of two numbers Integer
+     */
 
 
     public static Integer[] getMinMaxNumberLengths(ArrayList<Integer> integerArrayList) {
+
 
         if (integerArrayList.size() < 2) {
             throw new IllegalArgumentException();
@@ -26,10 +39,16 @@ public class NumberUtils {
                 numberMinLengths = number;
             }
         }
-
         return new Integer[]{numberMinLengths, numberMaxLengths};
-
     }
+
+    /**
+     * The method returns the length of the number in characters
+     * without taking into account the negative sign
+     *
+     * @param anyNumber int
+     * @return int numberLength
+     */
 
 
     public static int numberLength(int anyNumber) { // метод определения длинны числа в символах без учета знака отрицания
@@ -45,10 +64,21 @@ public class NumberUtils {
         return (o1, o2) -> o1.toString().length() - o2.toString().length();
     }
 
-
+    /**
+     * The method sorts the list based on the number of characters in the number.
+     *
+     * @param integerArrayList - array of Integer
+     */
     public static void sortByNumberLengths(ArrayList<Integer> integerArrayList) {
         Collections.sort(integerArrayList, compareNumberLengths());
     }
+
+    /**
+     * The method returns numbers whose length is less than the average length across all the numbers
+     *
+     * @param integerArrayList - array of Integer
+     * @return array of Integer
+     */
 
 
     public static ArrayList<Integer> getNumbersLengthsLessMedium(ArrayList<Integer> integerArrayList) {
@@ -68,8 +98,15 @@ public class NumberUtils {
         return resultArrayList;
     }
 
+    /**
+     * The method returns a number from the list,
+     * in which the number of different digits is minimal.
+     *
+     * @param integerArrayList - array of Integer
+     * @return int
+     */
+
     public static int getMinDifferentNumbers(ArrayList<Integer> integerArrayList) {
-        int result = 0;
 
         ArrayList<Integer> arrayUniqueSymbols = new ArrayList<>(); // временный список
         Set<String> set = new HashSet<>();
@@ -99,6 +136,14 @@ public class NumberUtils {
 
     }
 
+    /**
+     * The method returns a list of single digits
+     * that make up a number in the correct order
+     *
+     * @param number - int
+     * @return array of Integer
+     */
+
 
     public static ArrayList<Integer> getDigitsNumber(int number) {
         ArrayList<Integer> arrayListDigit = new ArrayList<>();
@@ -110,6 +155,17 @@ public class NumberUtils {
         return arrayListDigit;
 
     }
+
+    /**
+     * The method returns the number of numbers
+     * containing only even digits,
+     * and the number of numbers with an equal number of even and odd digits.
+     *
+     * @param integerArrayList array of Integer
+     * @return int[] result - buffer of two numbers.
+     * The fist is number of numbers containing only even digits,
+     * the second number of numbers with an equal number of even and odd digits.
+     */
 
 
     public static int[] getCountEvenNumbers(ArrayList<Integer> integerArrayList) {
@@ -140,7 +196,12 @@ public class NumberUtils {
         return result;
     }
 
-
+    /**
+     * The method returns a number whose digits are in strict ascending order.
+     *
+     * @param integerArrayList array of Integer.
+     * @return int
+     */
     public static int getNumberIncreaseDigit(ArrayList<Integer> integerArrayList) {
 
         for (Integer number : integerArrayList) {
@@ -158,6 +219,13 @@ public class NumberUtils {
         return 0;
     }
 
+    /**
+     * The method returns a number consisting only of different digits.
+     *
+     * @param integerArrayList array of Integer
+     * @return Integer
+     */
+
     public static Integer getNumberMaxDifferentDigit(ArrayList<Integer> integerArrayList) { // можно модернизировать 4-й метод на 2 значения сразу
         HashSet<Integer> integerHashSet = new HashSet<>();
         ArrayList<Integer> arrayUniqueSymbols = new ArrayList<>(); // временный список
@@ -173,7 +241,52 @@ public class NumberUtils {
         }
         ArrayList<Integer> tempArray = (ArrayList<Integer>) arrayUniqueSymbols.clone();
         Collections.sort(tempArray);
-        int index = arrayUniqueSymbols.indexOf(tempArray.get(tempArray.size()-1));
+        int index = arrayUniqueSymbols.indexOf(tempArray.get(tempArray.size() - 1));
         return integerArrayList.get(index);
     }
+
+    /**
+     * The method returns true if the number is a palindrome.
+     *
+     * @param number int
+     * @return boolean
+     */
+
+    public static boolean isPalindrome(int number) {
+        if (number == reverseInt(number)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private static int reverseInt(int number) {
+        int reverseInt = 0;
+
+        while (number != 0) {
+            reverseInt = reverseInt * 10 + number % 10;
+            number /= 10;
+        }
+        return reverseInt;
+    }
+
+    /**
+     * Method returns array of the   palindrome numbers if preset in array.
+     *
+     * @param integerArrayList array of Integer
+     * @return array of Integer
+     */
+
+    public static ArrayList<Integer> getPalindromeNumbers(ArrayList<Integer> integerArrayList) {
+        ArrayList<Integer> palindromeNumberArray = new ArrayList<>();
+
+        for (Integer currentNumber : integerArrayList) {
+
+            if (isPalindrome(currentNumber)) {
+                palindromeNumberArray.add(currentNumber);
+            }
+        }
+        return palindromeNumberArray;
+    }
+
 }
