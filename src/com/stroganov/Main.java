@@ -3,7 +3,6 @@ package com.stroganov;
 
 /**
  * Задание. Ввести n чисел с консоли.
- * <p>
  * 1.     Найти самое короткое и самое длинное число. Вывести найденные числа и их длину.
  * 2.     Вывести числа в порядке возрастания (убывания) значений их длины.
  * 3.     Вывести на консоль те числа, длина которых меньше (больше) средней длины по всем числам, а также длину.
@@ -30,8 +29,6 @@ import java.util.ArrayList;
 public class Main {
     /**
      * Main method.
-     *
-     * @param args
      */
     public static void main(String[] args) {
 
@@ -82,7 +79,7 @@ public class Main {
 
         // 7
         System.out.println("Найти число, состоящее только из различных цифр. Если таких чисел несколько, найти первое из них.");
-        int numberMaxDifferentDigit = NumberUtils.getNumberMaxDifferentDigit(integerArrayList);
+        int numberMaxDifferentDigit = NumberUtils.getNumberDifferentDigit(integerArrayList);
         System.out.println("Число с максимальным количеством разных знаков " + numberMaxDifferentDigit);
 
         // 8
@@ -101,7 +98,6 @@ public class Main {
     /**
      * The method returns a list of numbers entered by the user from the keyboard.
      * The input stops when you enter the "y" character or the "q" character.
-     *
      * @return array of Integer
      */
 

@@ -223,25 +223,23 @@ public class NumberUtils {
      * The method returns a number consisting only of different digits.
      *
      * @param integerArrayList array of Integer
-     * @return Integer
+     * @return Integer first number with different digits
      */
 
-    public static Integer getNumberMaxDifferentDigit(ArrayList<Integer> integerArrayList) { // можно модернизировать 4-й метод на 2 значения сразу
+    public static Integer getNumberDifferentDigit(ArrayList<Integer> integerArrayList) {
         HashSet<Integer> integerHashSet = new HashSet<>();
-        ArrayList<Integer> arrayUniqueSymbols = new ArrayList<>(); // временный список
+        ArrayList<Integer> tempArrayUniqueSymbols = new ArrayList<>();
         for (Integer number : integerArrayList) {
             ArrayList<Integer> arrayListDigit = getDigitsNumber(number);
             if (arrayListDigit.size() == 1) return number;
-            for (Integer digit : arrayListDigit) {
-                integerHashSet.add(digit);
-            }
+            integerHashSet.addAll(arrayListDigit);
             if (integerHashSet.size() == arrayListDigit.size()) return number;
-            arrayUniqueSymbols.add(integerHashSet.size());
+            tempArrayUniqueSymbols.add(integerHashSet.size());
             integerHashSet.clear();
         }
-        ArrayList<Integer> tempArray = (ArrayList<Integer>) arrayUniqueSymbols.clone();
+        ArrayList<Integer> tempArray = (ArrayList<Integer>) tempArrayUniqueSymbols.clone();
         Collections.sort(tempArray);
-        int index = arrayUniqueSymbols.indexOf(tempArray.get(tempArray.size() - 1));
+        int index = tempArrayUniqueSymbols.indexOf(tempArray.get(tempArray.size() - 1));
         return integerArrayList.get(index);
     }
 
@@ -288,5 +286,4 @@ public class NumberUtils {
         }
         return palindromeNumberArray;
     }
-
 }
